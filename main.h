@@ -1,0 +1,8 @@
+//
+// Created by Vanda on 10/13/2025.
+//
+
+#ifndef HELLO_WORLD_ALGORITHM_MAIN_H
+#define HELLO_WORLD_ALGORITHM_MAIN_H
+
+#endif //HELLO_WORLD_ALGORITHM_MAIN_H
