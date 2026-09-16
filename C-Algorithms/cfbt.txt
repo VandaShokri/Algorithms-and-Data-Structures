@@ -1,0 +1,31 @@
+. Directed Graph Edge Classification
+During DFS, nodes are colored White (unvisited), Grey (visiting/in stack), or Black (finished). When evaluating an edge from node u to node v:
+
+Tree Edge: Node v is White. This is the first time v is discovered.
+
+Back Edge: Node v is Grey. v is an ancestor of u, indicating a cycle.
+
+Forward Edge: Node v is Black, and discovery[u] < discovery[v]. v is a descendant of u that was already fully explored.
+
+Cross Edge: Node v is Black, and discovery[u] > discovery[v]. There is no ancestor/descendant relationship; v was discovered and finished before u was even reached.
+
+2. Practical Text-Based Example
+
+a -> b -> c (Tree edges: a to b, and b to c)
+
+a -> c (Forward edge: bypassing b to a descendant)
+
+c -> a (Back edge: pointing back up to the ancestor)
+
+a -> d (Tree edge: branching out)
+
+d -> c (Cross edge: pointing to a completely separate, already-finished branch)
+
+3. Undirected Graphs
+In an undirected graph, Forward and Cross edges do not exist. We only have:
+
+Tree Edges: When exploring a White node.
+
+Back Edges: When exploring a Grey node that is not the immediate parent of the current node.
+
+Reasoning: Because edges are bidirectional, any path that would act as a "Forward" or "Cross" edge in a directed graph will naturally be traversed from the other direction first as either a Tree edge or a Back edge. For example, in the cycle a - b - c - a, a to b and b to c are Tree edges. When c looks at a, a is Grey (and not c's parent, b), so c - a is a Back edge.

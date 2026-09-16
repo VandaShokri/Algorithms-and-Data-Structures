@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+int hash(char* s,int M){
+int h=0;
+int b=127;
+for(i=0;s[i]!='\0';i++){
+h=(h*b+s[i])%M;
+}
+return h;
+}
+if we just sum up the ASCII code of the characters for example stop and spot would end up in the same cell so instead we use a polynomial equation where order of the characters matter b is usually the closest prime number to ascii characters. we use %M in the end to make sure everything is smaller than M and there is no overflow. for only small alphabetic numbers we van make a much smaller b.
+int hash(char* s,int M){
+int h=0;
+int b=31;
+for(i=0;s[i]!='\0';i++){
+h=h(*b+s[i]-'a')%M;
+}
+return h;
+}

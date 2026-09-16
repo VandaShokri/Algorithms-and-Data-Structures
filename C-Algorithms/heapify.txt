@@ -1,0 +1,21 @@
+I'm gonna explain max heap
+void hepify(int* array,int n,int i){
+int l=2*i+1;
+int r=2*i+2;
+int max=i;
+if(l<n && array[l]>array[max]) max=l;
+if(r<n && array[r]>array[max]) max=r;
+if(max!=i){
+int temp=array[i];
+array[i]=array[max];
+array[max]=temp;
+hepify(array,n,max);
+
+}
+in heapify we want every parent to be larger than its children so we start usually from the the last parent and compare it and if it has larger children we switch it with the largest one and then we do the same with the switched children to make sure it is larger than its children.
+in heapsort algorithm first step is heap build the array and there we use heapify starting from the last parent to make the heap then in each step  we extract the largest elemet that is first element and switch it with the last element which is the last rightmost leaf then we do the heapify again to have the next max on the top.
+in priority queue we extract the root which is first element in the array and has the highest prority and replace it with the last element which is the rightmost leaf and then do the heapify again so that elememts find their suitable places and we have highest pririty on the top again.
+example: 5 15 7 17 2 
+17>15,17>2: 5 17 7 15 2
+17>5,17>7:17 5 7 15 2
+15>5,15>2: 17 15 7 5 2
